@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5LB API — Документация для разработчиков</title>
-    <meta name="description"
-        content="Публичная документация REST API каталога товаров 5lb.pro. Эндпоинты, параметры, примеры ответов." />
+    <meta name="description" content="Документация REST API каталога товаров 5lb.pro" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -21,6 +20,7 @@
             --accent2: #7c5df9;
             --green: #2dd4a0;
             --orange: #f97316;
+            --red: #f87171;
             --text: #e2e8f0;
             --muted: #6b7a99;
             --tag-bg: rgba(79, 142, 247, .12);
@@ -34,7 +34,7 @@
         *::after {
             box-sizing: border-box;
             margin: 0;
-            padding: 0;
+            padding: 0
         }
 
         body {
@@ -42,34 +42,32 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            min-height: 100vh;
+            min-height: 100vh
         }
 
-        /* ── HEADER ── */
+        /* HEADER */
         header {
             background: linear-gradient(135deg, #0d0f14 0%, #131726 60%, #0f1322 100%);
             border-bottom: 1px solid var(--border);
             padding: 56px 24px 48px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: hidden
         }
 
         header::before {
             content: '';
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 60% 60% at 20% 50%, rgba(79, 142, 247, .08) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 50% at 80% 40%, rgba(124, 93, 249, .07) 0%, transparent 70%);
-            pointer-events: none;
+            background: radial-gradient(ellipse 60% 60% at 20% 50%, rgba(79, 142, 247, .08) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 80% 40%, rgba(124, 93, 249, .07) 0%, transparent 70%);
+            pointer-events: none
         }
 
         .logo {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 16px;
+            margin-bottom: 16px
         }
 
         .logo-icon {
@@ -82,13 +80,13 @@
             justify-content: center;
             font-weight: 700;
             font-size: 18px;
-            color: #fff;
+            color: #fff
         }
 
         .logo-text {
             font-size: 22px;
             font-weight: 700;
-            letter-spacing: -.3px;
+            letter-spacing: -.3px
         }
 
         header h1 {
@@ -99,14 +97,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 12px;
+            margin-bottom: 12px
         }
 
         header p {
             color: var(--muted);
             font-size: 16px;
-            max-width: 520px;
-            margin: 0 auto 24px;
+            max-width: 560px;
+            margin: 0 auto 24px
         }
 
         .base-url-badge {
@@ -119,24 +117,33 @@
             padding: 8px 16px;
             font-family: 'JetBrains Mono', monospace;
             font-size: 14px;
-            color: var(--green);
+            color: var(--green)
         }
 
         .base-url-badge span {
             color: var(--muted);
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: .05em;
+            letter-spacing: .05em
         }
 
-        /* ── LAYOUT ── */
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 6px var(--green);
+            flex-shrink: 0
+        }
+
+        /* LAYOUT */
         .container {
             max-width: 920px;
             margin: 0 auto;
-            padding: 48px 24px;
+            padding: 48px 24px
         }
 
-        /* ── SECTION TITLE ── */
+        /* SECTION TITLE */
         .section-title {
             font-size: 11px;
             font-weight: 600;
@@ -145,21 +152,58 @@
             color: var(--muted);
             margin-bottom: 16px;
             padding-bottom: 8px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border)
         }
 
-        /* ── ENDPOINT CARD ── */
+        /* AUTH BLOCK */
+        .auth-block {
+            background: linear-gradient(90deg, rgba(249, 115, 22, .06) 0%, transparent 100%);
+            border: 1px solid rgba(249, 115, 22, .25);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin-bottom: 16px
+        }
+
+        .auth-block .auth-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--orange);
+            margin-bottom: 8px
+        }
+
+        .auth-example {
+            margin-top: 10px;
+            background: #0a0c12;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px
+        }
+
+        .auth-key {
+            color: var(--muted)
+        }
+
+        .auth-val {
+            color: var(--orange)
+        }
+
+        /* ENDPOINT CARD */
         .endpoint-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             overflow: hidden;
-            transition: border-color .2s;
+            transition: border-color .2s
         }
 
         .endpoint-card:hover {
-            border-color: rgba(79, 142, 247, .35);
+            border-color: rgba(79, 142, 247, .35)
         }
 
         .endpoint-header {
@@ -168,7 +212,7 @@
             gap: 12px;
             padding: 16px 20px;
             cursor: pointer;
-            user-select: none;
+            user-select: none
         }
 
         .method-badge {
@@ -178,30 +222,35 @@
             padding: 4px 10px;
             border-radius: 6px;
             flex-shrink: 0;
-            letter-spacing: .04em;
+            letter-spacing: .04em
         }
 
         .get {
             background: rgba(45, 212, 160, .15);
-            color: var(--green);
+            color: var(--green)
         }
 
-        .url {
+        .post {
             background: rgba(249, 115, 22, .15);
-            color: var(--orange);
+            color: var(--orange)
+        }
+
+        .url-badge {
+            background: rgba(124, 93, 249, .15);
+            color: var(--accent2)
         }
 
         .endpoint-path {
             font-family: 'JetBrains Mono', monospace;
             font-size: 13.5px;
             color: var(--text);
-            flex: 1;
+            flex: 1
         }
 
         .endpoint-desc {
             font-size: 13px;
             color: var(--muted);
-            flex-shrink: 0;
+            flex-shrink: 0
         }
 
         .chevron {
@@ -211,38 +260,37 @@
             background: none;
             color: var(--muted);
             cursor: pointer;
-            transition: transform .25s;
             flex-shrink: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: center
         }
 
         .chevron svg {
-            transition: transform .25s;
+            transition: transform .25s
         }
 
         .endpoint-body {
             display: none;
             border-top: 1px solid var(--border);
             padding: 20px;
-            gap: 20px;
-            flex-direction: column;
+            gap: 16px;
+            flex-direction: column
         }
 
         .endpoint-card.open .endpoint-body {
-            display: flex;
+            display: flex
         }
 
         .endpoint-card.open .chevron svg {
-            transform: rotate(180deg);
+            transform: rotate(180deg)
         }
 
-        /* ── PARAMS TABLE ── */
+        /* TABLE */
         .params-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 13.5px;
+            font-size: 13.5px
         }
 
         .params-table th {
@@ -253,37 +301,50 @@
             font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: .05em;
+            letter-spacing: .05em
         }
 
         .params-table th:first-child {
-            border-radius: 6px 0 0 6px;
+            border-radius: 6px 0 0 6px
         }
 
         .params-table th:last-child {
-            border-radius: 0 6px 6px 0;
+            border-radius: 0 6px 6px 0
         }
 
         .params-table td {
-            padding: 10px 12px;
+            padding: 9px 12px;
             border-bottom: 1px solid var(--border);
-            vertical-align: top;
+            vertical-align: top
         }
 
         .params-table tr:last-child td {
-            border-bottom: none;
+            border-bottom: none
         }
 
         .param-name {
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
-            font-size: 13px;
+            font-size: 13px
+        }
+
+        .req-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--orange);
+            background: rgba(249, 115, 22, .1);
+            border: 1px solid rgba(249, 115, 22, .2);
+            border-radius: 4px;
+            padding: 1px 5px;
+            margin-left: 4px;
+            vertical-align: middle
         }
 
         .param-opt {
             color: var(--muted);
             font-size: 11px;
-            margin-top: 2px;
+            margin-top: 1px
         }
 
         .param-type {
@@ -293,10 +354,10 @@
             font-size: 11px;
             font-family: 'JetBrains Mono', monospace;
             padding: 2px 7px;
-            border-radius: 5px;
+            border-radius: 5px
         }
 
-        /* ── CODE BLOCK ── */
+        /* CODE BLOCK */
         .code-block {
             background: #0a0c12;
             border: 1px solid var(--border);
@@ -306,7 +367,7 @@
             font-size: 12.5px;
             line-height: 1.7;
             overflow-x: auto;
-            position: relative;
+            position: relative
         }
 
         .code-label {
@@ -315,7 +376,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: .06em;
-            margin-bottom: 8px;
+            margin-bottom: 8px
         }
 
         .copy-btn {
@@ -330,47 +391,49 @@
             font-family: 'Inter', sans-serif;
             padding: 4px 10px;
             cursor: pointer;
-            transition: all .2s;
+            transition: all .2s
         }
 
         .copy-btn:hover {
             color: var(--text);
-            border-color: var(--accent);
+            border-color: var(--accent)
         }
 
         .copy-btn.copied {
             color: var(--green);
-            border-color: var(--green);
+            border-color: var(--green)
         }
 
         /* JSON syntax */
         .k {
-            color: #7c9ef9;
+            color: #7c9ef9
         }
 
-        /* key */
         .s {
-            color: #a5d6a7;
+            color: #a5d6a7
         }
 
-        /* string value */
         .n {
-            color: #f48fb1;
+            color: #f48fb1
         }
 
-        /* number */
         .nul {
-            color: var(--muted);
+            color: var(--muted)
         }
 
-        /* ── IMAGE URL SECTION ── */
+        .cm {
+            color: #4b5563;
+            font-style: italic
+        }
+
+        /* INFO BOX */
         .info-box {
             background: var(--surface2);
             border: 1px solid var(--border);
             border-radius: var(--radius-sm);
-            padding: 16px 20px;
+            padding: 14px 18px;
             font-size: 13.5px;
-            line-height: 1.8;
+            line-height: 1.8
         }
 
         .info-box code {
@@ -379,14 +442,73 @@
             padding: 1px 6px;
             border-radius: 4px;
             font-size: 12.5px;
-            color: var(--accent);
+            color: var(--accent)
         }
 
-        /* ── STATS / QUICK LINKS ── */
+        .warn-box {
+            background: rgba(249, 115, 22, .06);
+            border: 1px solid rgba(249, 115, 22, .2);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 13.5px;
+            color: #fbd1a7
+        }
+
+        .info-line {
+            background: rgba(79, 142, 247, .06);
+            border: 1px solid rgba(79, 142, 247, .2);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-size: 13.5px;
+            color: #bfdbfe
+        }
+
+        /* STATUS CODES */
+        .status-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px
+        }
+
+        .status-row:last-child {
+            border-bottom: none
+        }
+
+        .sc {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            min-width: 36px
+        }
+
+        .sc-200 {
+            color: var(--green)
+        }
+
+        .sc-400 {
+            color: #fbbf24
+        }
+
+        .sc-401 {
+            color: var(--red)
+        }
+
+        .sc-404 {
+            color: #f9a8d4
+        }
+
+        .sc-500 {
+            color: var(--red)
+        }
+
+        /* QUICK CARDS */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 12px
         }
 
         .quick-card {
@@ -398,11 +520,11 @@
             align-items: center;
             gap: 10px;
             font-size: 13.5px;
-            transition: border-color .2s;
+            transition: border-color .2s
         }
 
         .quick-card:hover {
-            border-color: rgba(79, 142, 247, .4);
+            border-color: rgba(79, 142, 247, .4)
         }
 
         .quick-icon {
@@ -413,48 +535,46 @@
             align-items: center;
             justify-content: center;
             font-size: 16px;
-            flex-shrink: 0;
+            flex-shrink: 0
         }
 
         .quick-card a {
             color: var(--accent);
             text-decoration: none;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12.5px;
+            font-size: 12.5px
         }
 
         .quick-card a:hover {
-            text-decoration: underline;
+            text-decoration: underline
         }
 
-        /* ── SEPARATOR ── */
         .sep {
             height: 1px;
             background: var(--border);
-            margin: 40px 0;
+            margin: 40px 0
         }
 
-        /* ── FOOTER ── */
         footer {
             text-align: center;
             padding: 32px 24px;
             color: var(--muted);
             font-size: 13px;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--border)
         }
 
         footer a {
             color: var(--accent);
-            text-decoration: none;
+            text-decoration: none
         }
 
-        @media (max-width: 600px) {
+        @media(max-width:600px) {
             .endpoint-desc {
-                display: none;
+                display: none
             }
 
             .grid-2 {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr
             }
         }
     </style>
@@ -462,78 +582,442 @@
 
 <body>
 
-    <!-- ══════════ HEADER ══════════ -->
     <header>
         <div class="logo">
             <div class="logo-icon">5</div>
             <span class="logo-text">5LB API</span>
         </div>
         <h1>Документация для разработчиков</h1>
-        <p>Публичные REST API endpoints для работы с каталогом товаров. Все запросы — GET, авторизация не требуется.</p>
+        <p>REST API каталога товаров 5lb.pro. Публичные эндпоинты не требуют авторизации. Синхронизация из 1С — с
+            токеном.</p>
         <div class="base-url-badge">
+            <span class="dot"></span>
             <span>Base URL</span>
             https://app.5lb.pro
         </div>
     </header>
 
-    <!-- ══════════ MAIN ══════════ -->
     <div class="container">
 
-        <!-- Quick access -->
+        <!-- QUICK ACCESS -->
         <p class="section-title">Быстрый доступ</p>
         <div class="grid-2">
             <div class="quick-card">
-                <div class="quick-icon" style="background:rgba(45,212,160,.12);">📦</div>
+                <div class="quick-icon" style="background:rgba(45,212,160,.12)">📦</div>
                 <div>
-                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px;">Каталог товаров</div>
-                    <a href="https://app.5lb.pro/api/catalog-5lb?page=1&limit=5" target="_blank">/api/catalog-5lb</a>
+                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Каталог</div><a
+                        href="https://app.5lb.pro/api/catalog-5lb?limit=5" target="_blank">/api/catalog-5lb</a>
                 </div>
             </div>
             <div class="quick-card">
-                <div class="quick-icon" style="background:rgba(79,142,247,.12);">📊</div>
+                <div class="quick-icon" style="background:rgba(79,142,247,.12)">📊</div>
                 <div>
-                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px;">Статистика</div>
-                    <a href="https://app.5lb.pro/api/catalog-5lb/stats" target="_blank">/api/catalog-5lb/stats</a>
+                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Статистика</div><a
+                        href="https://app.5lb.pro/api/catalog-5lb/stats" target="_blank">/api/catalog-5lb/stats</a>
                 </div>
             </div>
             <div class="quick-card">
-                <div class="quick-icon" style="background:rgba(124,93,249,.12);">🏷️</div>
+                <div class="quick-icon" style="background:rgba(124,93,249,.12)">🏷️</div>
                 <div>
-                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px;">Категории</div>
-                    <a href="https://app.5lb.pro/api/catalog-5lb/sections" target="_blank">/api/catalog-5lb/sections</a>
+                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Категории</div><a
+                        href="https://app.5lb.pro/api/catalog-5lb/sections"
+                        target="_blank">/api/catalog-5lb/sections</a>
                 </div>
             </div>
             <div class="quick-card">
-                <div class="quick-icon" style="background:rgba(249,115,22,.12);">🌍</div>
+                <div class="quick-icon" style="background:rgba(249,115,22,.12)">🔄</div>
                 <div>
-                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px;">Бренды</div>
-                    <a href="https://app.5lb.pro/api/catalog-5lb/brands" target="_blank">/api/catalog-5lb/brands</a>
+                    <div style="color:var(--muted);font-size:11px;margin-bottom:2px">Синхронизация 1С</div><span
+                        style="font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--orange)">/api/catalog-5lb/sync</span>
                 </div>
             </div>
         </div>
 
         <div class="sep"></div>
 
-        <!-- ── ENDPOINTS ── -->
-        <p class="section-title">Endpoints</p>
+        <!-- ═══════════════════════════════════════
+       1С ИНТЕГРАЦИЯ
+  ════════════════════════════════════════ -->
+        <p class="section-title">🔄 Интеграция с 1С</p>
 
-        <!-- 1. Весь каталог -->
+        <!-- AUTH -->
+        <div class="auth-block">
+            <div class="auth-title">🔑 Авторизация — Bearer Token</div>
+            <div style="font-size:13.5px;color:#ccc;margin-bottom:4px">Все запросы к эндпоинту синхронизации требуют
+                заголовок:</div>
+            <div class="auth-example">
+                <span class="auth-key">Authorization: </span><span class="auth-val">Bearer YOUR_SECRET_TOKEN</span>
+            </div>
+            <div style="margin-top:10px;font-size:13px;color:var(--muted)">Токен выдаётся администратором 5lb. Публичные
+                GET-эндпоинты авторизации не требуют.</div>
+        </div>
+
+        <!-- POST /sync -->
+        <div class="endpoint-card open" id="ep-sync">
+            <div class="endpoint-header" onclick="toggle('ep-sync')">
+                <span class="method-badge post">POST</span>
+                <span class="endpoint-path">/api/catalog-5lb/sync</span>
+                <span class="endpoint-desc">Создать / обновить товар из 1С</span>
+                <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    </svg></div>
+            </div>
+            <div class="endpoint-body">
+
+                <div class="info-line">Логика <strong>upsert</strong>: если товар с указанным <code
+                        style="color:var(--orange);font-family:'JetBrains Mono',monospace">articleMain</code> уже
+                    существует — обновляется. Если нет — создаётся новый.</div>
+
+                <div>
+                    <div class="code-label">Заголовки запроса</div>
+                    <table class="params-table">
+                        <tr>
+                            <th>Заголовок</th>
+                            <th>Значение</th>
+                            <th>Обязательный</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">Authorization</div>
+                            </td>
+                            <td><span style="font-family:'JetBrains Mono',monospace;font-size:13px">Bearer
+                                    YOUR_TOKEN</span></td>
+                            <td><span class="req-badge">ДА</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">Content-Type</div>
+                            </td>
+                            <td><span
+                                    style="font-family:'JetBrains Mono',monospace;font-size:13px">application/json</span>
+                            </td>
+                            <td><span class="req-badge">ДА</span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <div class="code-label">Тело запроса (JSON)</div>
+                    <table class="params-table">
+                        <tr>
+                            <th>Поле</th>
+                            <th>Тип</th>
+                            <th>Обяз.</th>
+                            <th>Описание</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">articleMain<span class="req-badge">ДА</span></div>
+                            </td>
+                            <td><span class="param-type">string</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Основной артикул — ключ для поиска в базе</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">productName<span class="req-badge">ДА</span></div>
+                            </td>
+                            <td><span class="param-type">string</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Полное название товара</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">articleAdditional</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Дополнительный артикул (вариация)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">brand</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Бренд</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">section1</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Категория 1-го уровня</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">section2</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Категория 2-го уровня</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">section3</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Категория 3-го уровня</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">section4</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Категория 4-го уровня</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">flavor</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Вкус</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">color</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Цвет</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">weightVolume</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Вес / объём (напр. "900 г", "1 л")</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">servings</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Количество порций</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">quantityInPack</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Кол-во в упаковке</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">country</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Страна производителя</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">releaseForm</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">"Порошок", "Капсулы", "Таблетки"…</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">description</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Описание товара</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">howToUse</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Способ применения</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">ingredients</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Состав / ингредиенты</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="param-name">compositionPerServing</div>
+                                <div class="param-opt">необязательный</div>
+                            </td>
+                            <td><span class="param-type">string|null</span></td>
+                            <td></td>
+                            <td style="color:var(--muted)">Состав на порцию (КБЖУ)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <div class="code-label">Пример тела запроса</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        <pre>{
+  <span class="k">"articleMain"</span>:      <span class="s">"1010002"</span>,
+  <span class="k">"articleAdditional"</span>:<span class="s">"CLYLW-VOL700"</span>,
+  <span class="k">"productName"</span>:      <span class="s">"Whey Gold Standard"</span>,
+  <span class="k">"brand"</span>:            <span class="s">"Optimum Nutrition"</span>,
+  <span class="k">"section1"</span>:         <span class="s">"Спортивное питание"</span>,
+  <span class="k">"section2"</span>:         <span class="s">"Протеин"</span>,
+  <span class="k">"flavor"</span>:           <span class="s">"Шоколад"</span>,
+  <span class="k">"country"</span>:          <span class="s">"США"</span>,
+  <span class="k">"weightVolume"</span>:     <span class="s">"2.27 кг"</span>,
+  <span class="k">"servings"</span>:         <span class="s">"74"</span>,
+  <span class="k">"releaseForm"</span>:      <span class="s">"Порошок"</span>
+}</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="code-label">Ответ при успехе — 200 OK</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        <pre>{
+  <span class="k">"ok"</span>:     <span class="nul">true</span>,
+  <span class="k">"action"</span>: <span class="s">"updated"</span>,  <span class="cm">// "created" или "updated"</span>
+  <span class="k">"item"</span>: {
+    <span class="k">"id"</span>:               <span class="s">"abc123"</span>,
+    <span class="k">"articleMain"</span>:     <span class="s">"1010002"</span>,
+    <span class="k">"productName"</span>:     <span class="s">"Whey Gold Standard"</span>,
+    <span class="k">"brand"</span>:           <span class="s">"Optimum Nutrition"</span>,
+    <span class="k">"imageUrl"</span>:        <span class="s">"https://app.5lb.pro/images/catalog/1010002-CLYLW-VOL700.png"</span>,
+    <span class="k">"createdAt"</span>:       <span class="s">"2026-03-04T07:23:45.174Z"</span>,
+    <span class="k">"updatedAt"</span>:       <span class="s">"2026-03-04T07:23:45.174Z"</span>
+  }
+}</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="code-label">Коды ответа</div>
+                    <div
+                        style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px">
+                        <div class="status-row"><span class="sc sc-200">200</span><span>Товар успешно создан или
+                                обновлён</span></div>
+                        <div class="status-row"><span class="sc sc-400">400</span><span>Отсутствует обязательное поле
+                                (<code style="font-family:'JetBrains Mono',monospace">articleMain</code> или <code
+                                    style="font-family:'JetBrains Mono',monospace">productName</code>)</span></div>
+                        <div class="status-row"><span class="sc sc-401">401</span><span>Токен отсутствует или
+                                неверный</span></div>
+                        <div class="status-row"><span class="sc sc-500">500</span><span>Внутренняя ошибка сервера</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="code-label">Ответ при ошибке</div>
+                    <div class="code-block">
+                        <pre>{ <span class="k">"ok"</span>: <span class="nul">false</span>, <span class="k">"error"</span>: <span class="s">"Описание ошибки"</span> }</pre>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="code-label">Пример на языке 1С (BSL)</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        <pre style="color:#cdd6f4"><span style="color:var(--muted)">// Соединение</span>
+Соединение = Новый HTTPСоединение(
+    "app.5lb.pro", 443, , , , 30,
+    Новый ЗащищенноеСоединениеOpenSSL()
+);
+
+<span style="color:var(--muted)">// Заголовки</span>
+Заголовки = Новый Соответствие;
+Заголовки["Content-Type"]  = "application/json";
+Заголовки["Authorization"] = "Bearer <span style="color:var(--orange)">ВАШ_ТОКЕН</span>";
+
+<span style="color:var(--muted)">// Данные</span>
+Данные = Новый Структура;
+Данные.Вставить("articleMain",  Товар.Артикул);
+Данные.Вставить("productName",  Товар.Наименование);
+Данные.Вставить("brand",        Товар.Бренд);
+Данные.Вставить("section1",     Товар.Раздел1);
+Данные.Вставить("country",      Товар.Страна);
+Данные.Вставить("weightVolume", Товар.Вес);
+Данные.Вставить("flavor",       Товар.Вкус);
+
+<span style="color:var(--muted)">// Сериализация</span>
+ЗаписьJSON = Новый ЗаписьJSON;
+ЗаписьJSON.УстановитьСтроку();
+ЗаписатьJSON(ЗаписьJSON, Данные);
+ТелоJSON = ЗаписьJSON.Закрыть();
+
+<span style="color:var(--muted)">// Отправка</span>
+Запрос = Новый HTTPЗапрос("/api/catalog-5lb/sync", Заголовки);
+Запрос.УстановитьТелоИзСтроки(ТелоJSON, КодировкаТекста.UTF8);
+Ответ = Соединение.ВызватьHTTPМетод("POST", Запрос);
+
+Если Ответ.КодСостояния = 200 Тогда
+    ЧтениеJSON = Новый ЧтениеJSON;
+    ЧтениеJSON.УстановитьСтроку(Ответ.ПолучитьТелоКакСтроку());
+    Рез = ПрочитатьJSON(ЧтениеJSON);
+    Сообщить("Товар " + Рез.action); <span style="color:var(--muted)">// "created" или "updated"</span>
+КонецЕсли;</pre>
+                    </div>
+                </div>
+
+                <div class="warn-box">⚠️ Если возникает ошибка <strong>"Узел не прошёл проверку"</strong> — используйте
+                    <code
+                        style="font-family:'JetBrains Mono',monospace;color:var(--orange)">ЗащищенноеСоединениеOpenSSL()</code>
+                    с актуальными корневыми сертификатами.</div>
+
+            </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <!-- ═══════════════════════════════════════
+       ПУБЛИЧНЫЙ API
+  ════════════════════════════════════════ -->
+        <p class="section-title">📋 Публичный API — каталог товаров</p>
+
+        <!-- 1. Каталог -->
         <div class="endpoint-card open" id="ep1">
             <div class="endpoint-header" onclick="toggle('ep1')">
                 <span class="method-badge get">GET</span>
                 <span class="endpoint-path">/api/catalog-5lb</span>
-                <span class="endpoint-desc">Получить весь каталог</span>
+                <span class="endpoint-desc">Список товаров</span>
                 <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                     </svg></div>
             </div>
             <div class="endpoint-body">
                 <div>
-                    <div class="code-label">Параметры запроса</div>
+                    <div class="code-label">Query-параметры</div>
                     <table class="params-table">
                         <tr>
                             <th>Параметр</th>
                             <th>Тип</th>
+                            <th>Default</th>
                             <th>Описание</th>
                         </tr>
                         <tr>
@@ -542,9 +1026,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">integer</span></td>
-                            <td style="color:var(--muted)">Номер страницы. По умолчанию <code
-                                    style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:12px;">1</code>
-                            </td>
+                            <td style="color:var(--muted)">1</td>
+                            <td style="color:var(--muted)">Номер страницы</td>
                         </tr>
                         <tr>
                             <td>
@@ -552,11 +1035,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">integer</span></td>
-                            <td style="color:var(--muted)">Товаров на странице. По умолчанию <code
-                                    style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:12px;">20</code>,
-                                максимум <code
-                                    style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:12px;">100</code>
-                            </td>
+                            <td style="color:var(--muted)">20</td>
+                            <td style="color:var(--muted)">Товаров на стр. (макс. 100)</td>
                         </tr>
                         <tr>
                             <td>
@@ -564,6 +1044,7 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
+                            <td style="color:var(--muted)">—</td>
                             <td style="color:var(--muted)">Поиск по названию, бренду, артикулу</td>
                         </tr>
                         <tr>
@@ -572,7 +1053,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Фильтр: основная категория</td>
+                            <td style="color:var(--muted)">—</td>
+                            <td style="color:var(--muted)">Фильтр: категория 1</td>
                         </tr>
                         <tr>
                             <td>
@@ -580,7 +1062,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Фильтр: подкатегория</td>
+                            <td style="color:var(--muted)">—</td>
+                            <td style="color:var(--muted)">Фильтр: категория 2</td>
                         </tr>
                         <tr>
                             <td>
@@ -588,7 +1071,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Фильтр: раздел 3</td>
+                            <td style="color:var(--muted)">—</td>
+                            <td style="color:var(--muted)">Фильтр: категория 3</td>
                         </tr>
                         <tr>
                             <td>
@@ -596,7 +1080,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Фильтр: раздел 4</td>
+                            <td style="color:var(--muted)">—</td>
+                            <td style="color:var(--muted)">Фильтр: категория 4</td>
                         </tr>
                         <tr>
                             <td>
@@ -604,6 +1089,7 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
+                            <td style="color:var(--muted)">—</td>
                             <td style="color:var(--muted)">Фильтр по бренду</td>
                         </tr>
                         <tr>
@@ -612,7 +1098,8 @@
                                 <div class="param-opt">необязательный</div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Фильтр по стране производителя</td>
+                            <td style="color:var(--muted)">—</td>
+                            <td style="color:var(--muted)">Фильтр по стране</td>
                         </tr>
                     </table>
                 </div>
@@ -621,7 +1108,7 @@
                     <div class="code-block">
                         <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
                         <span style="color:var(--muted)">GET</span> https://app.5lb.pro/api/catalog-5lb<span
-                            style="color:var(--accent)">?page=1&amp;limit=20&amp;search=протеин</span>
+                            style="color:var(--accent)">?page=1&amp;limit=20&amp;search=протеин&amp;brand=Optimum+Nutrition</span>
                     </div>
                 </div>
                 <div>
@@ -631,19 +1118,29 @@
                         <pre>{
   <span class="k">"items"</span>: [
     {
-      <span class="k">"id"</span>:                <span class="s">"abc123"</span>,
-      <span class="k">"productName"</span>:      <span class="s">"Whey Gold Standard"</span>,
-      <span class="k">"brand"</span>:            <span class="s">"Optimum Nutrition"</span>,
-      <span class="k">"section1"</span>:         <span class="s">"Спортивное питание"</span>,
-      <span class="k">"section2"</span>:         <span class="s">"Протеин"</span>,
-      <span class="k">"articleMain"</span>:      <span class="s">"1010002"</span>,
-      <span class="k">"articleAdditional"</span>:<span class="s">"CLYLW-VOL700"</span>,
-      <span class="k">"imageUrl"</span>:         <span class="s">"https://app.5lb.pro/images/catalog/1010002-CLYLW-VOL700.png"</span>,
-      <span class="k">"weightVolume"</span>:     <span class="s">"2.27 кг"</span>,
-      <span class="k">"servings"</span>:         <span class="s">"74"</span>,
-      <span class="k">"flavor"</span>:           <span class="s">"Шоколад"</span>,
-      <span class="k">"color"</span>:            <span class="nul">null</span>,
-      <span class="k">"country"</span>:          <span class="s">"США"</span>
+      <span class="k">"id"</span>:                 <span class="s">"abc123"</span>,
+      <span class="k">"productName"</span>:       <span class="s">"Whey Gold Standard"</span>,
+      <span class="k">"brand"</span>:             <span class="s">"Optimum Nutrition"</span>,
+      <span class="k">"section1"</span>:          <span class="s">"Спортивное питание"</span>,
+      <span class="k">"section2"</span>:          <span class="s">"Протеин"</span>,
+      <span class="k">"section3"</span>:          <span class="nul">null</span>,
+      <span class="k">"section4"</span>:          <span class="nul">null</span>,
+      <span class="k">"articleMain"</span>:       <span class="s">"1010002"</span>,
+      <span class="k">"articleAdditional"</span>: <span class="s">"CLYLW-VOL700"</span>,
+      <span class="k">"imageUrl"</span>:          <span class="s">"https://app.5lb.pro/images/catalog/1010002-CLYLW-VOL700.png"</span>,
+      <span class="k">"weightVolume"</span>:      <span class="s">"2.27 кг"</span>,
+      <span class="k">"servings"</span>:          <span class="s">"74"</span>,
+      <span class="k">"flavor"</span>:            <span class="s">"Шоколад"</span>,
+      <span class="k">"color"</span>:             <span class="nul">null</span>,
+      <span class="k">"country"</span>:           <span class="s">"США"</span>,
+      <span class="k">"releaseForm"</span>:       <span class="s">"Порошок"</span>,
+      <span class="k">"quantityInPack"</span>:    <span class="nul">null</span>,
+      <span class="k">"description"</span>:       <span class="s">"..."</span>,
+      <span class="k">"howToUse"</span>:          <span class="s">"..."</span>,
+      <span class="k">"ingredients"</span>:       <span class="s">"..."</span>,
+      <span class="k">"compositionPerServing"</span>: <span class="s">"..."</span>,
+      <span class="k">"createdAt"</span>:         <span class="s">"2026-01-01T00:00:00.000Z"</span>,
+      <span class="k">"updatedAt"</span>:         <span class="s">"2026-03-04T07:00:00.000Z"</span>
     }
   ],
   <span class="k">"pagination"</span>: {
@@ -658,32 +1155,9 @@
             </div>
         </div>
 
-        <!-- 2. Категории -->
+        <!-- 2. По артикулу -->
         <div class="endpoint-card" id="ep2">
             <div class="endpoint-header" onclick="toggle('ep2')">
-                <span class="method-badge get">GET</span>
-                <span class="endpoint-path">/api/catalog-5lb/sections</span>
-                <span class="endpoint-desc">Категории</span>
-                <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-                    </svg></div>
-            </div>
-            <div class="endpoint-body">
-                <div class="info-box">Возвращает уникальные значения <code>section1</code>, <code>section2</code>,
-                    <code>section3</code>, <code>section4</code> — все разделы каталога.</div>
-                <div>
-                    <div class="code-label">Пример запроса</div>
-                    <div class="code-block">
-                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        <span style="color:var(--muted)">GET</span> https://app.5lb.pro/api/catalog-5lb/sections
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. По артикулу -->
-        <div class="endpoint-card" id="ep3">
-            <div class="endpoint-header" onclick="toggle('ep3')">
                 <span class="method-badge get">GET</span>
                 <span class="endpoint-path">/api/catalog-5lb/by-article/:articleMain</span>
                 <span class="endpoint-desc">Товар по артикулу</span>
@@ -692,6 +1166,9 @@
                     </svg></div>
             </div>
             <div class="endpoint-body">
+                <div class="info-box">Возвращает все варианты товара по основному артикулу. В ответе включён
+                    <code>imageUrl</code> с полным URL, а также <code>imageWidth</code> и <code>imageHeight</code> —
+                    реальные размеры изображения в пикселях.</div>
                 <div>
                     <div class="code-label">Path-параметр</div>
                     <table class="params-table">
@@ -702,7 +1179,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="param-name">articleMain</div>
+                                <div class="param-name">articleMain<span class="req-badge">ДА</span></div>
                             </td>
                             <td><span class="param-type">string</span></td>
                             <td style="color:var(--muted)">Основной артикул товара</td>
@@ -717,12 +1194,40 @@
                             style="color:var(--accent)">1010002</span>
                     </div>
                 </div>
+                <div>
+                    <div class="code-label">Пример ответа</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        <pre>{
+  <span class="k">"items"</span>: [
+    {
+      <span class="k">"id"</span>:           <span class="s">"abc123"</span>,
+      <span class="k">"productName"</span>: <span class="s">"Whey Gold Standard"</span>,
+      <span class="k">"articleMain"</span>: <span class="s">"1010002"</span>,
+      <span class="k">"imageUrl"</span>:    <span class="s">"https://app.5lb.pro/images/catalog/1010002-CLYLW-VOL700.png"</span>,
+      <span class="k">"imageWidth"</span>:  <span class="n">800</span>,   <span class="cm">// null если фото нет</span>
+      <span class="k">"imageHeight"</span>: <span class="n">800</span>,   <span class="cm">// null если фото нет</span>
+      <span class="cm">// ... остальные поля</span>
+    }
+  ]
+}</pre>
+                    </div>
+                </div>
+                <div>
+                    <div class="code-label">Коды ответа</div>
+                    <div
+                        style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 16px">
+                        <div class="status-row"><span class="sc sc-200">200</span><span>Товар найден</span></div>
+                        <div class="status-row"><span class="sc sc-404">404</span><span>Товар с таким артикулом не
+                                найден</span></div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 4. По ID -->
-        <div class="endpoint-card" id="ep4">
-            <div class="endpoint-header" onclick="toggle('ep4')">
+        <!-- 3. По ID -->
+        <div class="endpoint-card" id="ep3">
+            <div class="endpoint-header" onclick="toggle('ep3')">
                 <span class="method-badge get">GET</span>
                 <span class="endpoint-path">/api/catalog-5lb/:id</span>
                 <span class="endpoint-desc">Товар по ID</span>
@@ -741,10 +1246,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="param-name">id</div>
+                                <div class="param-name">id<span class="req-badge">ДА</span></div>
                             </td>
                             <td><span class="param-type">string</span></td>
-                            <td style="color:var(--muted)">Уникальный ID товара в базе данных</td>
+                            <td style="color:var(--muted)">Уникальный ID товара (CUID)</td>
                         </tr>
                     </table>
                 </div>
@@ -754,6 +1259,36 @@
                         <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
                         <span style="color:var(--muted)">GET</span> https://app.5lb.pro/api/catalog-5lb/<span
                             style="color:var(--accent)">abc123</span>
+                    </div>
+                </div>
+                <div class="info-box">Возвращает один объект товара (не массив). При отсутствии — <code>404</code>.
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Категории -->
+        <div class="endpoint-card" id="ep4">
+            <div class="endpoint-header" onclick="toggle('ep4')">
+                <span class="method-badge get">GET</span>
+                <span class="endpoint-path">/api/catalog-5lb/sections</span>
+                <span class="endpoint-desc">Категории</span>
+                <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    </svg></div>
+            </div>
+            <div class="endpoint-body">
+                <div class="info-box">Возвращает уникальные значения <code>section1</code>, <code>section2</code>,
+                    <code>section3</code>, <code>section4</code> для построения дерева категорий.</div>
+                <div>
+                    <div class="code-label">Пример ответа</div>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
+                        <pre>{
+  <span class="k">"section1"</span>: [<span class="s">"Спортивное питание"</span>, <span class="s">"Витамины"</span>, <span class="s">"..."</span>],
+  <span class="k">"section2"</span>: [<span class="s">"Протеин"</span>, <span class="s">"Аминокислоты"</span>, <span class="s">"..."</span>],
+  <span class="k">"section3"</span>: [<span class="s">"..."</span>],
+  <span class="k">"section4"</span>: [<span class="s">"..."</span>]
+}</pre>
                     </div>
                 </div>
             </div>
@@ -770,14 +1305,10 @@
                     </svg></div>
             </div>
             <div class="endpoint-body">
-                <div class="info-box">Возвращает отсортированный массив всех уникальных брендов.</div>
                 <div>
                     <div class="code-label">Пример ответа</div>
                     <div class="code-block">
-                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        <pre>{
-  <span class="k">"brands"</span>: [<span class="s">"BSN"</span>, <span class="s">"Optimum Nutrition"</span>, <span class="s">"Scitec Nutrition"</span>, <span class="s">"..."</span>]
-}</pre>
+                        <pre>{ <span class="k">"brands"</span>: [<span class="s">"BSN"</span>, <span class="s">"Optimum Nutrition"</span>, <span class="s">"Scitec Nutrition"</span>, <span class="s">"..."</span>] }</pre>
                     </div>
                 </div>
             </div>
@@ -788,20 +1319,16 @@
             <div class="endpoint-header" onclick="toggle('ep6')">
                 <span class="method-badge get">GET</span>
                 <span class="endpoint-path">/api/catalog-5lb/countries</span>
-                <span class="endpoint-desc">Страны производителей</span>
+                <span class="endpoint-desc">Страны</span>
                 <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                     </svg></div>
             </div>
             <div class="endpoint-body">
-                <div class="info-box">Возвращает отсортированный массив всех уникальных стран-производителей.</div>
                 <div>
                     <div class="code-label">Пример ответа</div>
                     <div class="code-block">
-                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        <pre>{
-  <span class="k">"countries"</span>: [<span class="s">"Россия"</span>, <span class="s">"США"</span>, <span class="s">"..."</span>]
-}</pre>
+                        <pre>{ <span class="k">"countries"</span>: [<span class="s">"Германия"</span>, <span class="s">"Россия"</span>, <span class="s">"США"</span>, <span class="s">"..."</span>] }</pre>
                     </div>
                 </div>
             </div>
@@ -818,14 +1345,10 @@
                     </svg></div>
             </div>
             <div class="endpoint-body">
-                <div class="info-box">Возвращает отсортированный массив всех уникальных вкусов.</div>
                 <div>
                     <div class="code-label">Пример ответа</div>
                     <div class="code-block">
-                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
-                        <pre>{
-  <span class="k">"flavors"</span>: [<span class="s">"Ваниль"</span>, <span class="s">"Шоколад"</span>, <span class="s">"..."</span>]
-}</pre>
+                        <pre>{ <span class="k">"flavors"</span>: [<span class="s">"Ваниль"</span>, <span class="s">"Клубника"</span>, <span class="s">"Шоколад"</span>, <span class="s">"..."</span>] }</pre>
                     </div>
                 </div>
             </div>
@@ -842,7 +1365,6 @@
                     </svg></div>
             </div>
             <div class="endpoint-body">
-                <div class="info-box">Возвращает общую статистику по каталогу.</div>
                 <div>
                     <div class="code-label">Пример ответа</div>
                     <div class="code-block">
@@ -860,13 +1382,13 @@
 
         <div class="sep"></div>
 
-        <!-- ── IMAGES ── -->
-        <p class="section-title">Изображения товаров</p>
+        <!-- IMAGES -->
+        <p class="section-title">🖼️ Изображения товаров</p>
         <div class="endpoint-card" id="ep9">
             <div class="endpoint-header" onclick="toggle('ep9')">
-                <span class="method-badge url">URL</span>
+                <span class="method-badge url-badge">URL</span>
                 <span class="endpoint-path">/images/catalog/{articleMain}-{articleAdditional}.png</span>
-                <span class="endpoint-desc">Изображение товара</span>
+                <span class="endpoint-desc">Фото товара</span>
                 <div class="chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
                     </svg></div>
@@ -876,14 +1398,16 @@
                     Формат имени файла:<br />
                     <code>articleMain-articleAdditional.ext</code> — если доп. артикул есть<br />
                     <code>articleMain.ext</code> — если доп. артикул пустой<br /><br />
-                    В ответе API есть поле <code>imageUrl</code> — готовый полный URL или <code>null</code>.
+                    В ответах API поле <code>imageUrl</code> содержит готовый полный URL или <code>null</code>.<br />
+                    Эндпоинт <code>/by-article</code> дополнительно возвращает <code>imageWidth</code> и
+                    <code>imageHeight</code>.
                 </div>
                 <div>
-                    <div class="code-label">Пример URL</div>
+                    <div class="code-label">Примеры URL</div>
                     <div class="code-block">
-                        <button class="copy-btn" onclick="copyCode(this)">Копировать</button>
                         https://app.5lb.pro/images/catalog/<span
                             style="color:var(--accent)">1010002-CLYLW-VOL700.png</span>
+                        https://app.5lb.pro/images/catalog/<span style="color:var(--accent)">1010002.png</span>
                     </div>
                 </div>
             </div>
@@ -892,22 +1416,17 @@
     </div>
 
     <footer>
-        Документация <a href="https://app.5lb.pro" target="_blank">5lb.pro</a> · Все запросы только GET · Авторизация не
-        требуется
+        <a href="https://app.5lb.pro" target="_blank">5lb.pro</a> API Documentation · v1.0
     </footer>
 
     <script>
-        function toggle(id) {
-            document.getElementById(id).classList.toggle('open');
-        }
-
+        function toggle(id) { document.getElementById(id).classList.toggle('open') }
         function copyCode(btn) {
             const block = btn.closest('.code-block');
-            const text = block.innerText.replace('Копировать\n', '').replace('Скопировано\n', '').trim();
+            const text = block.innerText.replace(/^(Копировать|Скопировано)\n/, '').trim();
             navigator.clipboard.writeText(text).then(() => {
-                btn.textContent = 'Скопировано';
-                btn.classList.add('copied');
-                setTimeout(() => { btn.textContent = 'Копировать'; btn.classList.remove('copied'); }, 2000);
+                btn.textContent = 'Скопировано'; btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Копировать'; btn.classList.remove('copied') }, 2000);
             });
         }
     </script>
